@@ -1,0 +1,274 @@
+
+{% load static %}
+{% load bootstrap4 %}
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'side_static/resources/libs/bootstrap/bootstrap.min.css' %}">
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="{% static 'side_static /resources/libs/fontawesome/all.min.css' %}">
+    <link rel="shortcut icon" href="" type="image/icon">
+    <link rel="stylesheet" href="{% static 'side_static/CSS/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>3Mz Store</title>
+    {% comment %} <script src="https://kit.fontawesome.com/67d0027990.js" crossorigin="anonymous"></script> {% endcomment %}
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            {% comment %} <a class="navbar-brand" href="#">3Mz Store</a> {% endcomment %}
+            <a href="#" style="font-size:20px" class="p-2" >3Mz Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'products:product_list' %}">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form> 
+            {% comment %} <form method="GET">
+                {% bootstrap_form myfilter.form %}
+                <input type="submit" value="search" class="boxed-btn3 w-100 mt-3"  />
+            </form> {% endcomment %}
+            <ul class="navbar-nav  mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active mt-2" aria-current="page" href="#">Card <i class="bi bi-cart"></i></a>
+                </li>
+                
+                
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle mt-2"  href="{% url 'login' %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile <i class="bi bi-person-check"></i></a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item " href="{% url 'accounts:profile' %}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:profile_edit' %}">Edit My Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts:order' %}">My Orders</a></li>
+                        <li><a class="dropdown-item" href="#">Track M Order</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
+                        <li><a class="dropdown-item" href="{% url 'password_reset' %}">Reset Password</a></li>
+                        </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  btn-sm " href="{% url 'logout' %}"> <button type="button" class="btn btn-outline-success">Log Out <i class="bi bi-box-arrow-in-right"></i></button> </i></a>
+                        </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link  btn-sm " href="{% url 'login' %}"> <button type="button" class="btn btn-outline-success">Log in <i class="bi bi-box-arrow-in-right"></i></button> </i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  btn-sm " href="{% url 'accounts:signup' %}"> <button type="button" class="btn btn-outline-success">Sign Up <i class="bi bi-person-plus"></i></button> </i></a>
+                        <!-- <a class="nav-link btn btn-outline-success btn-sm ms-3" target="_blank" href="#">Sign Up <i class="bi bi-person-plus"></i></a> -->
+                    </li>
+                {% endif %}
+
+                {% comment %} <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Mohamed</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">My Orders</a></li>
+                    <li><a class="dropdown-item" href="#">Track M Order</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    </ul>
+                </li> {% endcomment %}
+            </ul>
+            <!-- <div class="m-3">
+                <a href="#">Card</a>
+                <a href="#">MN</a>
+            </div> -->
+        </div>
+        </div>
+    </nav>
+
+
+    {% block body %}
+    
+    {% endblock body %}
+    
+    {% comment %} <div class="container mt-5 m-5">
+        <div class="row">
+        <div class="col-md-3 mt-3">
+            <div class="card" style="width: 18rem;">
+                <img width="286px"  height="180px" src="image/amir-hanna-sweUF7FcyP4-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/arnel-hasanovic-MNd-Rka1o0Q-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/charlesdeluvio-6OF-Ly-5oJY-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/ben-kolde-FaPxZ88yZrw-unsplash.jpg"class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/mike-meyers--haAxbjiHds-unsplash.jpg"card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/neil-soni-6wdRuK7bVTE-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/quino-al-8gWEAAXJjtI-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="image/rahul-chakraborty-xsGxhtAsfSA-unsplash.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div> {% endcomment %}
+    {% comment %} <div class="container mb-5 d-flex justify-content-center" >
+        <div class="row">
+            <div class="all_product_pagination " >
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination ">
+                        <li class="page-item">
+                        <a class="page-link center" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        </li>
+                    </ul>
+                    </nav>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    <div class="container mb-5 d-flex justify-content-center mt-5" >
+        <div class="row">
+            <div class="all_product_pagination " >
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination ">
+                        {% if product_list.has_previous %}
+                        <li class="page-item">
+                        <a class="page-link center" href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>Previous
+                            </a>
+                            </li>
+                        {% comment %} {% else %} {% endcomment %}
+                            {% comment %} <li class="disables"></li> {% endcomment %}
+                        {% endif %}
+                        {% for page in product_list.paginator.page_range %}
+                            {% if product_list.number == page %}
+                                <li class="page-item"><a class="page-link" href="#">{{page}}</a></li>
+                                
+                                {% else %}
+                                
+                                    <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                                
+                                {% endif %}
+                        {% endfor %}
+                        {% if product_list.has_next %}
+                            <li class="page-item">
+                            <a class="page-link" href="?page={{ product_list.next_page_number }}" aria-label="Next">next<span aria-hidden="true">&raquo;</span>
+                            </a>
+                            </li>
+                        {% comment %} {% else %} {% endcomment %}
+                            {% comment %} <li class="disables"></li> {% endcomment %}
+                        {% endif %}
+                    </ul>
+                    </nav>
+            </div> 
+</div>
+<script src="{% static 'side_static/resources/libs/jquery/jQuery.min.js'%}"></script>
+<script src="{% static 'side_static/resources/libs/bootstrap/bootstrap.min.js'%}"></script>
+<script src="{% static 'side_static/resources/libs/fontawesome/all.min.js'%}"></script>
+<script src="{% static 'side_static/resources/js/main.js'%}"></script>
+</body>
+</html>

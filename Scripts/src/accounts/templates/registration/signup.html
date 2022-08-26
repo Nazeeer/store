@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block body %}
+
+{% comment %} <div class="col-md-6"> {% endcomment %}
+
+    <div class="job_details_area">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="apply_job_form white-bg">
+                        <form method="post" action="">
+                            {% csrf_token %}
+                            {% bootstrap_form form %} 
+                            <input type="submit" class="btn btn-primary mt-3" value="Sign Up">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{# Assumes you setup the password_reset view in your URLconf #}
+
+
+{% endblock body %}

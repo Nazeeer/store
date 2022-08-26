@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {% extends 'base.html' %}
+{% block body %} {% endcomment %}
+    <!-- bradcam_area  -->
+    {% comment %} <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{profile.user}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+    <!--/ bradcam_area  -->
+{% comment %} 
+
+    <div class="job_details_area mt-5">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>profile Summery</h3>
+                        </div>
+                        <div class="job_content">
+                            <img width="90px" class="mb-2"  src="{{profile.image.url}}" alt="">
+                            <ul> {% endcomment %}
+                                {% comment %} <li><span><img width="80px" height="80px" src="{{profile.image.url}}" alt=""></span></li> {% endcomment %}
+                                {% comment %} <li>Name: <span>{{profile}}</span></li>
+                                <li>Email: <span>{{profile.user.email}} </span></li>
+                                <li>city: <span>{{profile.country}}</span></li>
+                                <li>Phone: <span>{{profile.addres}}</span></li>
+                                
+                            </ul>
+                            
+                        </div>
+                        <div class="p-3">
+                            <a class="btn btn-primary mb-2" href="{% url 'accounts:profile_edit'%}">Edit Profile</a>
+                        </div>
+                    </div>
+                    <div class="share_wrap d-flex"> {% endcomment %}
+                        {% comment %} <span>Share at:</span> {% endcomment %}
+                        {% comment %} <span>My accounts:</span>
+                        <ul>
+                            <li><a href="#"> <i class="bi bi-facebook"></i></a> </li>
+                            <li><a href="#"> <i class="bi bi-google"></i></a> </li>
+                            <li><a href="#"> <i class="bi bi-twitter"></i></a> </li>
+                            <li><a href="#"> <i class="bi bi-envelope"></i></a> </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock body %} {% endcomment %}
+
+
+
+
+
+
+
+
+<body>
+
+    {% block body %}
+    
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-6">
+                {% if profile.image %}
+                    <img  src="{{profile.image.url}}" class="card-img-top" alt="...">
+                {% else %}
+                    <img width="286px"  height="180px" src="{% static 'side_static/image/images.png' %}" class="card-img-top" alt="..."> 
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h1>{{profile}}  </h1>
+
+                <h4>{{profile.user.email}}</h4>
+
+                <h4 class="p-3">{{profile.country}}</h4>
+                <h4 class="p-3">{{profile.addres}}</h4>
+                <div class="">
+                    <div class="p-3">
+                        <a class="btn btn-primary mb-2" href="{% url 'accounts:profile_edit'%}">Edit Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="mt-5" style="color: rgb(196, 193, 193);">
+    {% comment %} <div class="container">
+        <div class="row d-flex justify-content-center wow fadeim">
+            <div class="col-md-8 text-center">
+                <h4 class="my-4 h4">My Order</h4>
+                <table class="table table-sm">
+                    <caption>List of Orders</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">cost</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>iphone 11</td>
+                            <td>10789.99$</td>
+                            
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>MACBOOK pro</td>
+                            <td>23000.00$</td>
+                            
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td></td>
+                            <td></td>
+                            <td>33789.00$</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+ {% endcomment %}
+
+{% endblock body %}

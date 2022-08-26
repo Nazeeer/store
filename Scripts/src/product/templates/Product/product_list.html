@@ -1,0 +1,255 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} <!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'side_static/resources/libs/bootstrap/bootstrap.min.css' %}">
+    <!-- fontAwesome -->
+    <link rel="stylesheet" href="{% static 'side_static /resources/libs/fontawesome/all.min.css' %}">
+
+    <link rel="shortcut icon" href="" type="image/icon">
+    <link rel="stylesheet" href="{% static 'side_static/CSS/style.css' %}">
+    <title>3Mz Store</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">3Mz Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url  'products:product_list' %}">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" 
+                aria-expanded="false">Categories</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </li>
+            </ul>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav  mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Card</a>
+                </li>
+    
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" 
+                    aria-expanded="false">Mohamed</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Edit Profile</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">My Orders</a></li>
+                    <li><a class="dropdown-item" href="#">Track M Order</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- <div class="m-3">
+                <a href="#">Card</a>
+                <a href="#">MN</a>
+            </div> -->
+        </div>
+        </div>
+    </nav> {% endcomment %}
+
+    {% block body %}
+    
+        <div class="container mt-5 m-5">
+            <div class="row">
+                {% for product in product_list %}
+                    <div class="col-md-3 mt-3">
+                        <div class="card" style="width: 18rem;">
+                            {% if product.proImg %}
+                                <img width="286px"  height="180px" src="{{product.proImg.url}}" class="card-img-top" alt="...">
+                            {% else %}
+                                <img width="286px"  height="180px" src="{% static 'side_static/image/images.png' %}" class="card-img-top" alt="...">
+                            {% endif %}
+                            {% comment %} <img width="286px"  height="180px" src="{% static  'side_static/image/amir-hanna-sweUF7FcyP4-unsplash.jpg'%}"
+                            class="card-img-top" alt="..."> {% endcomment %}
+                            <div class="card-body">
+                                <a href="{{product.get_absolute_url}}" class="card-title" style="text-decoration: none; font-size:22px;"> {{product.proName}} </a>
+                                {% if product.proDiscount > 0 %}
+                                    <h6 class="text-end">  <span class="badge bg-success">Sale</span> <span class="badge bg-danger">Bestseller</span></h6>
+                                {% else %}
+                                    <h6 class="text-end">   <span class="badge bg-danger">Bestseller</span></h6>
+                                {% endif %} 
+                                <p class="card-text">{{product.proDesc}}</p>
+                                <a href="{{product.get_absolute_url}}" class="card-text d-flex justify-content-center" style="text-decoration: none; font-size:22px; "> {{product.proPrice}}$</a><br>
+                                <a href="#" class="btn btn-primary">Add To Card <i class="bi bi-cart"></i> </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+    
+    {% endblock body %}
+
+        {% comment %} <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/2.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a href="" class="card-title" style="text-decoration: none; font-size:22px;">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/charlesdeluvio-6OF-Ly-5oJY-unsplash.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a href="" class="card-title" style="text-decoration: none; font-size:22px;">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content  bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/ben-kolde-FaPxZ88yZrw-unsplash.jpg'%}"class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a href="" class="card-title" style="text-decoration: none; font-size:22px;">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content  bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/mike-meyers--haAxbjiHds-unsplash.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a href="" class="card-title" style="text-decoration: none; font-size:22px;">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/neil-soni-6wdRuK7bVTE-unsplash.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a href="" class="card-title" style="text-decoration: none; font-size:22px;">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/quino-al-8gWEAAXJjtI-unsplash.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a href="" class="card-title"style="text-decoration: none; font-size:22px;">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-3">
+
+            <div class="card" style="width: 18rem;">
+                <img  width="286px"  height="180px" src="{% static  'side_static/image/rahul-chakraborty-xsGxhtAsfSA-unsplash.jpg'%}" class="card-img-top" alt="...">
+                <div class="card-body" >
+                    <a href="" style="text-decoration: none; font-size:22px;" class="card-title">Card title</a>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Add To Card</a>
+                </div>
+            </div>
+        </div>  {% endcomment %}
+        {% comment %} </div>
+    </div> {% endcomment %}
+
+
+{% comment %} 
+    <div class="container mb-5 d-flex justify-content-center" >
+        <div class="row">
+            <div class="all_product_pagination " >
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination ">
+                        {% if product_list.has_previous %}
+                        <li class="page-item">
+                        <a class="page-link center" href="?page={{ product_list.previous_page_number }}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>Previous
+                            </a>
+                            </li> {% endcomment %}
+                        {% comment %} {% else %} {% endcomment %}
+                            {% comment %} <li class="disables"></li> {% endcomment %}
+                        {% comment %} {% endif %}
+                        {% for page in product_list.paginator.page_range %}
+                            {% if product_list.number == page %}
+                                <li class="page-item"><a class="page-link" href="#">{{page}}</a></li>
+                                
+                                {% else %}
+                                
+                                    <li class="page-item"><a class="page-link" href="?page={{page}}">{{page}}</a></li>
+                                
+                                {% endif %}
+                        {% endfor %}
+                        {% if product_list.has_next %}
+                            <li class="page-item">
+                            <a class="page-link" href="?page={{ product_list.next_page_number }}" aria-label="Next">next<span aria-hidden="true">&raquo;</span>
+                            </a>
+                            </li> {% endcomment %}
+                        {% comment %} {% else %} {% endcomment %}
+                            {% comment %} <li class="disables"></li> {% endcomment %}
+                        {% comment %} {% endif %}
+                    </ul>
+                    </nav>
+            </div>  {% endcomment %}
+            {% comment %} </div>
+        </div>
+    </div>
+    {% comment %} <div class="pagination">
+        <span class="step-links">
+            {% if product_list.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ product_list.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ product_list.number }} of {{ product_list.paginator.num_pages }}.
+            </span>
+    
+            {% if product_list.has_next %}
+                <a href="?page={{ product_list.next_page_number }}">next</a>
+                <a href="?page={{ product_list.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div> {% endcomment %}
+    
+{% comment %} <script src="{% static 'side_static/resources/libs/jquery/jQuery.min.js'%}"></script>
+<script src="{% static 'side_static/resources/libs/bootstrap/bootstrap.min.js'%}"></script>
+<script src="{% static 'side_static/resources/libs/fontawesome/all.min.js'%}"></script>
+<script src="{% static 'side_static/resources/js/main.js'%}"></script>
+</body>
+</html>  {% endcomment %}

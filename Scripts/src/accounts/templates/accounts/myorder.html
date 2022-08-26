@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    <hr class="mt-5" style="color: rgb(196, 193, 193);">
+
+    <div class="container">
+        <div class="row d-flex justify-content-center wow fadeim">
+            <div class="col-md-8 text-center">
+                <h4 class="my-4 h4">My Order</h4>
+                <table class="table table-sm">
+                    <caption>List of Orders</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">cost</th>
+                            <th scope="col">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>iphone 11</td>
+                            <td>10789.99$</td>
+                            
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>MACBOOK pro</td>
+                            <td>23000.00$</td>
+                            
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td></td>
+                            <td></td>
+                            <td>33789.00$</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock body %}
